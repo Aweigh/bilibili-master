@@ -13,6 +13,7 @@ import rx.Observable;
  * 100332338@qq.com
  * <p>
  * bilibili-go相关api
+ * http://bilibili-service.daoapp.io/
  */
 public interface BiliGoService {
 
@@ -27,6 +28,7 @@ public interface BiliGoService {
     /**
      * 新番连载
      */
-    @GET("bangumi")
+    //@GET("bangumi")
+    @GET("Application/Bilibili/Test?service=BiliGoService&action=getNewBangumiSerialList&t=201805231527")
     Observable<NewBangumiSerialInfo> getNewBangumiSerialList();
 }

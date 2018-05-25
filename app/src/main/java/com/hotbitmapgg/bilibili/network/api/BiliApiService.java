@@ -15,6 +15,7 @@ import rx.Observable;
 /**
  * Created by hcc on 16/8/8 21:08
  * 100332338@qq.com
+ * http://api.bilibili.cn/
  */
 public interface BiliApiService {
 
@@ -38,8 +39,10 @@ public interface BiliApiService {
 
     /**
      * 话题中心
+     * http://api.bilibili.cn/
      */
-    @GET("topic/getlist?device=phone&mobi_app=iphone&page=1&pagesize=137")
+    //@GET("topic/getlist?device=phone&mobi_app=iphone&page=1&pagesize=137")
+    @GET("Application/Bilibili/Test?service=BiliApiService&action=getTopicCenterList&t=201805231527")
     Observable<TopicCenterInfo> getTopicCenterList();
 
     /**
@@ -52,12 +55,14 @@ public interface BiliApiService {
     /**
      * 首页关注
      */
-    @GET("x/feed/pull?access_key=9afd8a2836e5948e84e037ca5b33309c&actionKey=appkey&appkey=27eb53fc9058f8c3&build=4000&device=phone&mobi_app=iphone&platform=ios&pn=1&ps=30&sign=8d5f090c70b3743a6a7d899d885061f0&ts=1480131936&type=0")
+    //@GET("x/feed/pull?access_key=9afd8a2836e5948e84e037ca5b33309c&actionKey=appkey&appkey=27eb53fc9058f8c3&build=4000&device=phone&mobi_app=iphone&platform=ios&pn=1&ps=30&sign=8d5f090c70b3743a6a7d899d885061f0&ts=1480131936&type=0")
+    @GET("Application/Bilibili/Test?service=BiliApiService&action=getAttentionDynamic&t=201805231527")
     Observable<AttentionDynamicInfo> getAttentionDynamic();
 
     /**
      * 番剧详情评论
      */
-    @GET("x/v2/reply?_device=iphone&_hwid=c84c067f8d99f9d3&_ulv=10000&access_key=19946e1ef3b5cad1a756c475a67185bb&appkey=27eb53fc9058f8c3&appver=3940&build=3940&nohot=0&oid=5189987&platform=ios&pn=1&ps=20&sign=c3b059e907f5c1d3416daa9fcc6396bf&sort=0&type=1")
+    //@GET("x/v2/reply?_device=iphone&_hwid=c84c067f8d99f9d3&_ulv=10000&access_key=19946e1ef3b5cad1a756c475a67185bb&appkey=27eb53fc9058f8c3&appver=3940&build=3940&nohot=0&oid=5189987&platform=ios&pn=1&ps=20&sign=c3b059e907f5c1d3416daa9fcc6396bf&sort=0&type=1")
+    @GET("Application/Bilibili/Test?service=BiliApiService&action=getBangumiDetailsComments&t=201805231527")
     Observable<BangumiDetailsCommentInfo> getBangumiDetailsComments();
 }

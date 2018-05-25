@@ -145,10 +145,11 @@ public class HomeBangumiFragment extends RxLazyFragment {
                           getBody():表示广告体,位置在"新番连载"Section之后
                         */
                         banners.addAll(bangumiAppIndexInfo.getResult().getAd().getHead());//对应json xpath=result/ad/head
+                        newBangumiSerials.addAll(bangumiAppIndexInfo.getResult().getSerializing());//番剧新番连载Section,对应json xpath=result/previous/serializing
                         bangumibobys.addAll(bangumiAppIndexInfo.getResult().getAd().getBody());//对应json xpath=result/ad/body
-                        seasonNewBangumis.addAll(bangumiAppIndexInfo.getResult().getPrevious().getList());//对应json xpath=result/previous/list
+
                         season = bangumiAppIndexInfo.getResult().getPrevious().getSeason();//对应json xpath=result/previous/season
-                        newBangumiSerials.addAll(bangumiAppIndexInfo.getResult().getSerializing());//对应json xpath=result/previous/serializing
+                        seasonNewBangumis.addAll(bangumiAppIndexInfo.getResult().getPrevious().getList());//番剧分季新番Section,对应json xpath=result/previous/list
 
                         return RetrofitHelper.getBangumiAPI().getBangumiRecommended();//发起二级请求
                     }
@@ -158,7 +159,7 @@ public class HomeBangumiFragment extends RxLazyFragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(resultBeans -> {
-                    bangumiRecommends.addAll(resultBeans);//getBangumiAPI().getBangumiRecommended()请求结果保存到bangumiRecommends变量中
+                    bangumiRecommends.addAll(resultBeans);//getBangumiAPI().getBangumiRecommended()请求结果保存到bangumiRecommends变量中=>番剧推荐Section
                     finishTask();
                 }, throwable -> initEmptyView());
     }
@@ -172,13 +173,13 @@ public class HomeBangumiFragment extends RxLazyFragment {
         Observable.from(banners)
                 .compose(bindToLifecycle())
                 .forEach(bannersBean -> bannerList.add(new BannerEntity(
-                        bannersBean.getLink(), bannersBean.getTitle(), bannersBean.getImg())));
+                        bannersBean.getLink(), bannersBean.getTitle(), bannersBean.getImg())));//bannerList对应json xpath=result/ad/head
 
-        mSectionedRecyclerViewAdapter.addSection(new HomeBangumiBannerSection(bannerList));//番剧界面轮播图Section
+        mSectionedRecyclerViewAdapter.addSection(new HomeBangumiBannerSection(bannerList));//番剧界面轮播图Section(头部广告)
         mSectionedRecyclerViewAdapter.addSection(new HomeBangumiItemSection(getActivity()));//番剧顶部追番，放送表，索引条目Section
         mSectionedRecyclerViewAdapter.addSection(new HomeBangumiNewSerialSection(getActivity(), newBangumiSerials));//番剧新番连载Section
         if (!bangumibobys.isEmpty()) {
-            mSectionedRecyclerViewAdapter.addSection(new HomeBangumiBobySection(getActivity(), bangumibobys));//番剧界面内容Section
+            mSectionedRecyclerViewAdapter.addSection(new HomeBangumiBobySection(getActivity(), bangumibobys));//番剧界面内容Section(内容广告)
         }
         mSectionedRecyclerViewAdapter.addSection(new HomeBangumiSeasonNewSection(getActivity(), season, seasonNewBangumis));//番剧分季新番Section
         mSectionedRecyclerViewAdapter.addSection(new HomeBangumiRecommendSection(getActivity(), bangumiRecommends));//番剧推荐Section
