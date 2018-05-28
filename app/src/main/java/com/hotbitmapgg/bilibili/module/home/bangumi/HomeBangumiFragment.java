@@ -145,7 +145,7 @@ public class HomeBangumiFragment extends RxLazyFragment {
                           getBody():表示广告体,位置在"新番连载"Section之后
                         */
                         banners.addAll(bangumiAppIndexInfo.getResult().getAd().getHead());//对应json xpath=result/ad/head
-                        newBangumiSerials.addAll(bangumiAppIndexInfo.getResult().getSerializing());//番剧新番连载Section,对应json xpath=result/previous/serializing
+                        newBangumiSerials.addAll(bangumiAppIndexInfo.getResult().getSerializing());//番剧新番连载Section,对应json xpath=result/serializing
                         bangumibobys.addAll(bangumiAppIndexInfo.getResult().getAd().getBody());//对应json xpath=result/ad/body
 
                         season = bangumiAppIndexInfo.getResult().getPrevious().getSeason();//对应json xpath=result/previous/season

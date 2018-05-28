@@ -47,7 +47,6 @@ public class HomeBangumiSeasonNewSection extends StatelessSection {
         return seasonNewBangumis.size();
     }
 
-
     @Override
     public RecyclerView.ViewHolder getItemViewHolder(View view) {
         return new HomeBangumiSeasonNewSection.ItemViewHolder(view);
