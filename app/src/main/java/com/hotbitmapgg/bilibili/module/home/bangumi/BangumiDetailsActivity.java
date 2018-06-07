@@ -266,6 +266,7 @@ public class BangumiDetailsActivity extends RxBaseActivity {
         mBangumiSelectionRecycler.setAdapter(mBangumiDetailsSelectionAdapter);
         mBangumiDetailsSelectionAdapter.notifyItemForeground(episodes.size() - 1);
         mBangumiSelectionRecycler.scrollToPosition(episodes.size() - 1);
+        //单击选集事件
         mBangumiDetailsSelectionAdapter.setOnItemClickListener((position, holder) -> {
             mBangumiDetailsSelectionAdapter.notifyItemForeground(holder.getLayoutPosition());
             VideoDetailsActivity.launch(BangumiDetailsActivity.this,

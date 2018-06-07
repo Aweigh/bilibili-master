@@ -165,7 +165,7 @@ public class BrowserActivity extends RxBaseActivity {
                 return true;
             }
         });
-        mWebView.loadUrl(url);
+        mWebView.loadUrl(url);//内置浏览器加载页面,例如:"http://bangumi.bilibili.com/anime/5556"
     }
 
 

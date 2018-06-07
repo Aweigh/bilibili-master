@@ -25,5 +25,5 @@ public class ApiConstants {
     /// 蜘蛛寻服务器BaseURL
     /// 在模拟器中调试不要使用localhost,因为模拟器是另一台设备
     ///</summary>
-    public static final String ZZX_BASE_URL = "http://172.16.31.61:3573/"; //"http://www.zhizhuxun.com/";
+    public static final String ZZX_BASE_URL = "http://172.16.31.51:3573/"; //"http://www.zhizhuxun.com/";
 }

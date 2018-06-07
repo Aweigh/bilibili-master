@@ -70,6 +70,7 @@ public class HomeBangumiRecommendSection extends StatelessSection {
         HomeBangumiRecommendAdapter mAdapter = new HomeBangumiRecommendAdapter(
                 recyclerViewHolder.mRecyclerView, bangumiRecommends);
         recyclerViewHolder.mRecyclerView.setAdapter(mAdapter);
+        ///番剧推荐-渲染项的点击事件,跳转到浏览器页面
         mAdapter.setOnItemClickListener(
                 (position, holder1) -> BrowserActivity.launch((Activity) mContext,
                         bangumiRecommends.get(position).getLink(), bangumiRecommends.get(position).getTitle()));
