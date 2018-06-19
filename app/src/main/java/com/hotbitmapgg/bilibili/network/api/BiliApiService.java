@@ -22,7 +22,8 @@ public interface BiliApiService {
     /**
      * 视频评论
      */
-    @GET("feedback")
+    //@GET("feedback")
+    @GET("Application/Bilibili/Test?service=BiliApiService&action=getVideoComment&t=0")
     Observable<VideoCommentInfo> getVideoComment(@Query("aid") int aid, @Query("page") int page, @Query("pagesize") int pageSize, @Query("ver") int ver);
 
     /**
